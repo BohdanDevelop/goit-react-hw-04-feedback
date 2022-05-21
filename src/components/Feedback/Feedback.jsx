@@ -2,7 +2,7 @@
 import Statistics from "./Components/Statistics";
 import FeedbackOptions from "./Components/FeedbackOptions";
 import {Component} from "react";
-import styles from "./Feedback.module.scss";
+import "./Feedback.module.scss";
 
 class Feedback extends Component {
 state = {
