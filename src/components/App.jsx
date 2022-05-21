@@ -1,16 +1,19 @@
+import Feedback from "./Feedback";
+import Section from "./Section";
+import Form from "./Form"
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Section>
+        <Feedback />
+      </Section>
+<Section>
+  <Form/>
+  
+
+</Section>
     </div>
   );
 };
