@@ -1,6 +1,7 @@
 
 import Statistics from "./Components/Statistics";
 import FeedbackOptions from "./Components/FeedbackOptions";
+import Notification from "./Components/Notification";
 import {Component} from "react";
 import "./Feedback.module.scss";
 
@@ -37,10 +38,17 @@ countPositiveFeedbackPercentage = ()=>{
 
 render(){
     const {good, neutral, bad} = this.state;
+    const options = {
+        good: "good",
+        bad: "bad", 
+        neutral: "neutral",
+    }
     return (
      <div>
          <h1>Please leave feedback</h1>
-         <FeedbackOptions onLeaveFeedback={this.onButtonClick}/>
+         <FeedbackOptions onLeaveFeedback={this.onButtonClick}
+         options={options}
+         />
          <h2>Statistics</h2>
          
        {(good || neutral || bad) ? <Statistics 
@@ -49,7 +57,7 @@ render(){
          bad={bad} 
          countTotalFeedback={this.countTotalFeedback} 
          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
-         /> :  <h2>No feedback given</h2>
+         /> :  <Notification message="No feedback given"/>
          }
         
      </div>

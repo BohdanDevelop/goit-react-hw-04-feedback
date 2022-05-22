@@ -1,6 +1,6 @@
 import Feedback from "./Feedback";
 import Section from "./Section";
-import Form from "./Form"
+
 
 
 export const App = () => {
@@ -9,11 +9,7 @@ export const App = () => {
       <Section>
         <Feedback />
       </Section>
-<Section>
-  <Form/>
-  
 
-</Section>
     </div>
   );
 };
