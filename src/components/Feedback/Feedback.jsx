@@ -1,6 +1,7 @@
 import Statistics from './Components/Statistics';
 import FeedbackOptions from './Components/FeedbackOptions';
 import Notification from './Components/Notification';
+import Section from '../Section';
 import { Component } from 'react';
 import './Feedback.module.scss';
 
@@ -38,24 +39,26 @@ class Feedback extends Component {
     const options = ['good', 'bad', 'neutral'];
     return (
       <div>
-        <h2>Please leave feedback</h2>
-        <FeedbackOptions
-          onLeaveFeedback={this.onButtonClick}
-          options={options}
-        />
-        <h2>Statistics</h2>
-
-        {good || neutral || bad ? (
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            countTotalFeedback={this.countTotalFeedback()}
-            countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
+        <Section title="Feedback section">
+          <FeedbackOptions
+            onLeaveFeedback={this.onButtonClick}
+            options={options}
           />
-        ) : (
-          <Notification message="No feedback given" />
-        )}
+        </Section>
+
+        <Section title="Statistics section">
+          {good || neutral || bad ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              countTotalFeedback={this.countTotalFeedback()}
+              countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="No feedback given" />
+          )}
+        </Section>
       </div>
     );
   }
