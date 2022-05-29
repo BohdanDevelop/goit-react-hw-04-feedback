@@ -2,25 +2,29 @@ import style from './FeedbackOptions.module.scss';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
-const FeedbackOptions = ({ onLeaveFeedback, options }) => {
-  const buttonArray = options.map(option => {
-    const capitalOption = option.charAt(0).toUpperCase() + option.slice(1);
+const FeedbackOptions = ({ options }) => {
+  const buttonArray = options.map(({ name, value, setValue }) => {
     return (
       <button
         className={style.button}
-        onClick={() => onLeaveFeedback(option)}
+        onClick={() => setValue(value + 1)}
         type="button"
         key={nanoid()}
       >
-        {capitalOption}
+        {name}
       </button>
     );
   });
   return <div>{buttonArray}</div>;
 };
 FeedbackOptions.propTypes = {
-  onLeaveFeedback: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      setValue: PropTypes.func.isRequired,
+    })
+  ).isRequired,
 };
 
 export default FeedbackOptions;
