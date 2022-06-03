@@ -7,7 +7,7 @@ const FeedbackOptions = ({ options }) => {
     return (
       <button
         className={style.button}
-        onClick={() => setValue(value + 1)}
+        onClick={() => setValue({ ...value, [name]: value[name] + 1 })}
         type="button"
         key={nanoid()}
       >
@@ -21,7 +21,7 @@ FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
+      value: PropTypes.object.isRequired,
       setValue: PropTypes.func.isRequired,
     })
   ).isRequired,
